@@ -1,37 +1,36 @@
-import java.time.LocalDate;
-import java.time.Period;
+import java.time. LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
-public class Student {
+class Student 
+{
     private String name;
-    private String dob;
+    private LocalDate dateofbirth;
 
-    public Student(String name, String dob) {
-        this.name = name;
-        this.dob = dob;
+    public Student(String name,String dateofbirth)
+    {
+        this.name=name;
+        DateTimeFormatter formatter =DateTimeFormatter.ofPattern ("yyyy-MM-dd");
+        this.dateofbirth =LocalDate.parse(dateofbirth, formatter);
+
     }
+    public void displaystudentname()
+    {
+        System.out.println("Student Name:" + name);
 
-    public void displayName() {
-        System.out.println("Student Name: " + name);
     }
+    public void displayage()
+    {
+    LocalDate currentDate = LocalDate.now();
+    long age = ChronoUnit.YEARS.between(this.dateofbirth,currentDate); 
+    System.out.println("Age of Student is: " + age + " Years");
 
-    public void displayAge() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate dobDate = LocalDate.parse(dob, formatter);
-        LocalDate today = LocalDate.now();
-        Period age = Period.between(dobDate, today);
-        System.out.println("Age of " + name + ": " + age.getYears() + " years");
     }
-
-    public static void main(String[] args) {
-        Student student1 = new Student("John Doe", "15-08-2000");
-        student1.displayName();
-        student1.displayAge();
-
-        Student student2 = new Student("John Doe", "15-08-2000");
-        student1.displayName();
-        student1.displayAge();
+    public static void main(String[] args) 
+    {
+        Student stu = new Student( "gayatri", "2003-03-04");
+        stu.displayage();
+        stu.displaystudentname();
     }
 }
-
-
+ 
