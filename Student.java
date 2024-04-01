@@ -27,6 +27,11 @@ public class Student {
         Student student1 = new Student("John Doe", "15-08-2000");
         student1.displayName();
         student1.displayAge();
+
+        Student student2 = new Student("John Doe", "15-08-2000");
+        student1.displayName();
+        student1.displayAge();
     }
 }
+
 
